@@ -7,7 +7,7 @@
   "source": "./src/index.ts",
   "scripts": {
     "start": "tsx src/index.ts",
-    "test": "vitest",
+    "test": "vitest --typecheck --watch=false",
     "coverage": "vitest run --coverage",
     "__build": "tsup src/index.ts --format cjs,esm --dts --clean",
     "__dev": "tsup src/index.ts --watch .  --format cjs,esm --clean --onSuccess \"tsc -p tsconfig.json\""

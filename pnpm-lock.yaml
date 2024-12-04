@@ -11,18 +11,20 @@ importers:
       '@biomejs/biome':
         specifier: 1.9.4
         version: 1.9.4
+      '@vitest/coverage-v8':
+        specifier: ^2.1.8
+        version: 2.1.8(vitest@2.1.8)
       turbo:
         specifier: ^2.3.3
         version: 2.3.3
       typescript:
         specifier: 5.6.3
         version: 5.6.3
+      vitest:
+        specifier: ^2.1.8
+        version: 2.1.8
 
   packages/schema-core:
-    dependencies:
-      tsx:
-        specifier: ^4.19.2
-        version: 4.19.2
     devDependencies:
       '@vitest/coverage-v8':
         specifier: ^2.1.8
@@ -30,6 +32,9 @@ importers:
       tsup:
         specifier: ^8.0.1
         version: 8.3.5(postcss@8.4.49)(tsx@4.19.2)(typescript@5.6.3)
+      tsx:
+        specifier: ^4.19.2
+        version: 4.19.2
       typescript:
         specifier: 5.6.3
         version: 5.6.3
