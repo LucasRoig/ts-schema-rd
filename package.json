@@ -4,16 +4,19 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
-    "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "lint": "yarn biome ci",
+    "fix": "yarn biome check --write"
   },
   "devDependencies": {
-    "prettier": "^3.2.5",
+    "@biomejs/biome": "1.9.4",
     "turbo": "^2.3.3",
-    "typescript": "5.5.4"
+    "typescript": "5.6.3"
   },
   "packageManager": "pnpm@9.0.0",
   "engines": {
-    "node": ">=18"
+    "node": ">=22"
+  },
+  "volta": {
+    "node": "22.12.0"
   }
 }
