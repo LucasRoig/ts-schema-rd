@@ -4,8 +4,8 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
-    "lint": "yarn biome ci",
-    "fix": "yarn biome check --write"
+    "lint": "pnpm biome ci",
+    "fix": "pnpm biome check --write"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
