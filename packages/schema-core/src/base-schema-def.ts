@@ -16,8 +16,8 @@ type EmptySchemaDef = {
 type AddField<TSchemaDef extends SchemaDef, TKey extends string, T extends FieldDef<any, TKey>> =
   SetProperty<TSchemaDef, "fields", AddProperty<TSchemaDef["fields"], TKey, T>>;
 
-// const field1 = createField(ValueDef.of<string>(), "stringField");
-// const field2 = createField(ValueDef.of<number>(), "fieldNumber");
+const field1 = createField(ValueDef.of<string>(), "stringField");
+const field2 = createField(ValueDef.of<number>(), "fieldNumber");
 // type t = AddField<EmptySchemaDef, "stringField", typeof field1>;
 // type t2 = AddField<t, "fieldNumber", typeof field2>;
 
@@ -31,6 +31,7 @@ type AddField<TSchemaDef extends SchemaDef, TKey extends string, T extends Field
 // const t4 = inferFieldName(field1)
 
 export class SchemaDefBuilder<TSchemaDef extends SchemaDef> {
+  //Using a class as a builder works but looks hard to extend with plugins
   private schemaDef: TSchemaDef;
 
   public static new(): SchemaDefBuilder<EmptySchemaDef> {
@@ -58,3 +59,37 @@ export class SchemaDefBuilder<TSchemaDef extends SchemaDef> {
     return this.schemaDef;
   }
 }
+
+const initSchemaDefBuilder = () => {
+  const props = {
+    fields: {},
+    
+  };
+  const propsInteractor = {
+    addField: <TValue, TKey extends string>(field: FieldDef<TValue, TKey>) => {
+      return propsInteractor;
+    },
+    build: () => {
+      return props;
+    }
+  }
+  return propsInteractor;
+  // $props: {
+  //   fields: {},
+  // },
+  // addField: <TValue, TKey extends string>(field: FieldDef<TValue, TKey>) =>  {
+  //   const n = {
+  //     ...this,
+  //     $props: {
+  //       ...this.$props,
+  //       [field.name]: field
+  //     } as AddProperty<typeof this.$props, TKey, FieldDef<TValue, TKey>>
+  //   }
+  //   return n;
+  // },
+  // build: () => {
+  //   return this.$props;
+  // }
+}
+
+const s = initSchemaDefBuilder.addField(field1).build()
